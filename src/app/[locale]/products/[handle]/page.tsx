@@ -33,12 +33,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const { handle, locale } = await params;
+  const country = await getCountryCode();
+
+  const product = await getProduct(handle, country).catch((err) => {
+    console.error("[ProductPage] getProduct failed:", handle, err);
+    return null;
+  });
+
+  // notFound() must be called outside try/catch in Next.js 16
+  if (!product) notFound();
 
   try {
-    const country = await getCountryCode();
-    const product = await getProduct(handle, country).catch(() => null);
-    if (!product) notFound();
-
     const variants = product.variants.edges.map((e) => e.node);
     const images = product.images.edges.map((e) => e.node);
     const recommendations = await getProductRecommendations(product.id, country).catch(() => []);
@@ -86,7 +91,7 @@ export default async function ProductPage({ params }: Props) {
     </div>
   );
   } catch (err) {
-    console.error("[ProductPage] Server error for handle:", handle, err);
+    console.error("[ProductPage] Render error for handle:", handle, err);
     throw err;
   }
 }
