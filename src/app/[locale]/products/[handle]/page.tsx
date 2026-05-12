@@ -33,24 +33,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const { handle, locale } = await params;
-  const country = await getCountryCode();
-  const product = await getProduct(handle, country).catch(() => null);
-  if (!product) notFound();
 
-  const variants = product.variants.edges.map((e) => e.node);
-  const images = product.images.edges.map((e) => e.node);
-  const recommendations = await getProductRecommendations(product.id, country).catch(() => []);
-  const price = product.priceRange.minVariantPrice;
+  try {
+    const country = await getCountryCode();
+    const product = await getProduct(handle, country).catch(() => null);
+    if (!product) notFound();
 
-  const isHoodie = product.collections.nodes.some((c) => c.handle === "hoodie");
+    const variants = product.variants.edges.map((e) => e.node);
+    const images = product.images.edges.map((e) => e.node);
+    const recommendations = await getProductRecommendations(product.id, country).catch(() => []);
+    const price = product.priceRange.minVariantPrice;
 
-  if (isHoodie) {
-    return <HoodieProductPage product={product} recommendations={recommendations} />;
-  }
+    const isHoodie = product.collections.nodes.some((c) => c.handle === "hoodie");
 
-  const description = product.description
-    ? await translateDescription(product.description, locale)
-    : undefined;
+    if (isHoodie) {
+      return <HoodieProductPage product={product} recommendations={recommendations} />;
+    }
+
+    const description = product.description
+      ? await translateDescription(product.description, locale).catch(() => product.description)
+      : undefined;
 
   return (
     <div className="-mx-4 sm:-mx-6 lg:-mx-8">
@@ -83,4 +85,8 @@ export default async function ProductPage({ params }: Props) {
       </div>
     </div>
   );
+  } catch (err) {
+    console.error("[ProductPage] Server error for handle:", handle, err);
+    throw err;
+  }
 }
