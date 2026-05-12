@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getProductsByCollection } from "@/lib/queries";
+import { getProductsByCollection, getProducts } from "@/lib/queries";
 import { getCountryCode } from "@/lib/country";
 import { ProductCard } from "@/components/ProductCard";
 import { EditorialHeroPair } from "@/components/EditorialHeroPair";
@@ -10,10 +10,17 @@ export default async function HomePage() {
   const tc = await getTranslations('collection');
   const country = await getCountryCode();
 
-  const [newArrivals, bestSellers] = await Promise.all([
+  let [newArrivals, bestSellers] = await Promise.all([
     getProductsByCollection("new-arrivals", 6, country).catch(() => []),
     getProductsByCollection("best-sellers", 6, country).catch(() => []),
   ]);
+
+  // Fallback: if collections are empty, show all products
+  if (newArrivals.length === 0 && bestSellers.length === 0) {
+    const all = await getProducts(12, country).catch(() => []);
+    newArrivals = all.slice(0, 6);
+    bestSellers = all.slice(6, 12);
+  }
 
   return (
     <div>
