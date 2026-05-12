@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getProduct, getProducts, getProductRecommendations } from "@/lib/queries";
+import { getProduct, getProductRecommendations } from "@/lib/queries";
 import { AddToCartButton } from "@/components/AddToCartButton";
 import { ProductImages } from "@/components/ProductImages";
 import { TrackView } from "@/components/TrackView";
@@ -16,10 +16,7 @@ interface Props {
   params: Promise<{ handle: string; locale: string }>;
 }
 
-export async function generateStaticParams() {
-  const products = await getProducts(50).catch(() => []);
-  return products.map((p) => ({ handle: p.handle }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { handle } = await params;
