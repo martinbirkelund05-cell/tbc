@@ -5,7 +5,9 @@
  */
 export function fixCheckoutUrl(url: string): string {
   if (!url) return url;
-  return url.replace(/^https?:\/\/[^/]+/, `https://checkout.thebrandcrate.com`);
+  // Rewrite to myshopify.com until checkout.thebrandcrate.com subdomain is configured
+  const shopifyDomain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN ?? "pcqthb-30.myshopify.com";
+  return url.replace(/^https?:\/\/[^/]+/, `https://${shopifyDomain}`);
 }
 
 export function formatPrice(amount: string, currencyCode: string): string {
