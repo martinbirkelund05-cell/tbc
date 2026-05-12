@@ -17,20 +17,58 @@ const LANGUAGES = [
   { code: 'nl', label: 'Nederlands', flag: '🇳🇱' },
 ];
 
-function LanguageSelector() {
+const COUNTRIES = [
+  { code: "AU", name: "Australia" },
+  { code: "AT", name: "Austria" },
+  { code: "BE", name: "Belgium" },
+  { code: "CA", name: "Canada" },
+  { code: "DK", name: "Denmark" },
+  { code: "FI", name: "Finland" },
+  { code: "FR", name: "France" },
+  { code: "DE", name: "Germany" },
+  { code: "IS", name: "Iceland" },
+  { code: "IE", name: "Ireland" },
+  { code: "IT", name: "Italy" },
+  { code: "LU", name: "Luxembourg" },
+  { code: "NL", name: "Netherlands" },
+  { code: "NO", name: "Norway" },
+  { code: "PL", name: "Poland" },
+  { code: "PT", name: "Portugal" },
+  { code: "ES", name: "Spain" },
+  { code: "SE", name: "Sweden" },
+  { code: "CH", name: "Switzerland" },
+  { code: "GB", name: "United Kingdom" },
+  { code: "US", name: "United States" },
+];
+
+function getCountryCookie(): string {
+  if (typeof document === "undefined") return "GB";
+  const m = document.cookie.match(/NEXT_COUNTRY=([A-Z]{2})/);
+  return m?.[1] ?? "GB";
+}
+
+function CountryLanguageSelector() {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState("GB");
+  const [selectedLang, setSelectedLang] = useState(locale);
 
-  const current = LANGUAGES.find((l) => l.code === locale) ?? LANGUAGES[0];
+  useEffect(() => {
+    setSelectedCountry(getCountryCookie());
+    setSelectedLang(locale);
+  }, [locale]);
 
-  const switchLocale = (code: string) => {
-    document.cookie = `NEXT_LOCALE=${code}; path=/; max-age=31536000`;
-    // Strip any existing locale prefix, then prepend new one
+  const currentLang = LANGUAGES.find((l) => l.code === selectedLang) ?? LANGUAGES[0];
+  const currentCountry = COUNTRIES.find((c) => c.code === selectedCountry) ?? COUNTRIES.find(c => c.code === "GB")!;
+
+  const handleSave = () => {
+    document.cookie = `NEXT_LOCALE=${selectedLang}; path=/; max-age=31536000`;
+    document.cookie = `NEXT_COUNTRY=${selectedCountry}; path=/; max-age=31536000`;
     const stripped = pathname.replace(/^\/[a-z]{2}(\/|$)/, '/');
     const rest = stripped === '/' ? '' : stripped;
-    router.push(`/${code}${rest}`);
+    router.push(`/${selectedLang}${rest}`);
     setOpen(false);
   };
 
@@ -41,33 +79,62 @@ function LanguageSelector() {
         className="flex items-center gap-1.5 text-[12px] transition-opacity hover:opacity-70"
         style={{ color: "#666" }}
       >
-        <span>{current.label}</span>
+        <span>{currentCountry.name}</span>
+        <span style={{ opacity: 0.4 }}>·</span>
+        <span>{currentLang.label}</span>
         <span style={{ fontSize: "10px", opacity: 0.6 }}>▾</span>
       </button>
 
       {open && (
         <>
-          <div
-            className="fixed inset-0 z-10"
-            onClick={() => setOpen(false)}
-          />
+          <div className="fixed inset-0 z-10" onClick={() => setOpen(false)} />
           <div
             className="absolute bottom-full right-0 mb-2 z-20 bg-white shadow-lg"
-            style={{ border: "1px solid var(--border)", minWidth: "140px" }}
+            style={{ border: "1px solid var(--border)", minWidth: "260px", padding: "16px" }}
           >
-            {LANGUAGES.map((lang) => (
-              <button
-                key={lang.code}
-                onClick={() => switchLocale(lang.code)}
-                className="flex items-center gap-2 w-full px-3 py-2 text-[12px] text-left transition-opacity hover:opacity-70"
-                style={{
-                  color: lang.code === locale ? DARK : "#666",
-                  fontWeight: lang.code === locale ? 600 : 400,
-                }}
-              >
-                <span>{lang.label}</span>
-              </button>
-            ))}
+            {/* Country */}
+            <p className="text-[10px] font-semibold tracking-widest uppercase mb-2" style={{ color: DARK }}>Country</p>
+            <select
+              value={selectedCountry}
+              onChange={(e) => setSelectedCountry(e.target.value)}
+              className="w-full text-[12px] mb-4"
+              style={{
+                border: "1px solid var(--border)", padding: "8px 10px",
+                color: "#333", background: "#fff", outline: "none",
+              }}
+            >
+              {COUNTRIES.map((c) => (
+                <option key={c.code} value={c.code}>{c.name}</option>
+              ))}
+            </select>
+
+            {/* Language */}
+            <p className="text-[10px] font-semibold tracking-widest uppercase mb-2" style={{ color: DARK }}>Language</p>
+            <div className="flex flex-col gap-0 mb-4">
+              {LANGUAGES.map((lang) => (
+                <button
+                  key={lang.code}
+                  onClick={() => setSelectedLang(lang.code)}
+                  className="flex items-center gap-2 px-2 py-1.5 text-[12px] text-left transition-opacity hover:opacity-70"
+                  style={{
+                    color: lang.code === selectedLang ? DARK : "#666",
+                    fontWeight: lang.code === selectedLang ? 600 : 400,
+                  }}
+                >
+                  <span>{lang.flag}</span>
+                  <span>{lang.label}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Save */}
+            <button
+              onClick={handleSave}
+              className="w-full py-2.5 text-[11px] font-semibold tracking-widest uppercase text-white transition-opacity hover:opacity-80"
+              style={{ backgroundColor: DARK }}
+            >
+              Save
+            </button>
           </div>
         </>
       )}
@@ -373,7 +440,7 @@ export function Footer({ policies }: { policies: ShopifyPolicies }) {
           <span className="text-[11px] tracking-[0.12em] font-semibold" style={{ color: DARK }}>
             {t('countryLanguage').toUpperCase()}
           </span>
-          <LanguageSelector />
+          <CountryLanguageSelector />
         </div>
 
         {/* Separator */}
