@@ -4,9 +4,8 @@
  * myshopify.com domain so checkout always lands on Shopify's servers.
  */
 export function fixCheckoutUrl(url: string): string {
-  const shopifyDomain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN;
-  if (!shopifyDomain || !url) return url;
-  return url.replace(/^https?:\/\/[^/]+/, `https://${shopifyDomain}`);
+  if (!url) return url;
+  return url.replace(/^https?:\/\/[^/]+/, `https://checkout.thebrandcrate.com`);
 }
 
 export function formatPrice(amount: string, currencyCode: string): string {
