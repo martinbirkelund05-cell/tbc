@@ -23,18 +23,17 @@ export async function GET() {
         "X-Shopify-Storefront-Access-Token": accessToken,
       },
       body: JSON.stringify({
-        query: `{
-          shop { name }
-          products(first: 3) { edges { node { id title handle } } }
-          newArrivals: collection(handle: "new-arrivals") {
-            title
-            products(first: 3) { edges { node { id title } } }
+        query: `
+          mutation {
+            cartCreate {
+              cart {
+                id
+                checkoutUrl
+              }
+              userErrors { field message }
+            }
           }
-          bestSellers: collection(handle: "best-sellers") {
-            title
-            products(first: 3) { edges { node { id title } } }
-          }
-        }`,
+        `,
       }),
       cache: "no-store",
     });
