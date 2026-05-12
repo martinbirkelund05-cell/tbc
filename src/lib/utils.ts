@@ -1,11 +1,12 @@
 /**
- * Shopify sets checkoutUrl to the store's primary domain (thebrandcrate.com).
- * Since that domain points to Vercel (not Shopify), we rewrite it to the
- * myshopify.com domain so checkout always lands on Shopify's servers.
+ * Ensures the checkout URL points to the myshopify.com domain.
+ * In a headless setup, thebrandcrate.com is served by Vercel — not Shopify —
+ * so we always rewrite to the Shopify store domain for checkout.
  */
 export function fixCheckoutUrl(url: string): string {
   if (!url) return url;
-  return url.replace(/^https?:\/\/[^/]+/, `https://checkout.thebrandcrate.com`);
+  const shopifyDomain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN ?? "pcqthb-30.myshopify.com";
+  return url.replace(/^https?:\/\/[^/]+/, `https://${shopifyDomain}`);
 }
 
 export function formatPrice(amount: string, currencyCode: string): string {
