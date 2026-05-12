@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef, useCallback } from "react";
 import { createCart, addToCart } from "@/lib/queries";
+import { fixCheckoutUrl } from "@/lib/utils";
 
 interface Props {
   variantId: string;
@@ -25,7 +26,7 @@ export function ExpressCheckout({ variantId, amount, currencyCode }: Props) {
     try {
       const cart = await createCart();
       const updated = await addToCart(cart.id, variantIdRef.current, 1);
-      window.location.href = updated.checkoutUrl;
+      window.location.href = fixCheckoutUrl(updated.checkoutUrl);
     } catch {
       setLoading(false);
     }

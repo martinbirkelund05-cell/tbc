@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import { useCart } from "@/context/CartContext";
 import { useRecentlyViewed } from "@/hooks/useRecentlyViewed";
 import { useTranslations } from 'next-intl';
-import { formatPrice } from "@/lib/utils";
+import { formatPrice, fixCheckoutUrl } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import type { ShopifyProduct } from "@/types/shopify";
@@ -321,7 +321,7 @@ export function CartDrawer() {
 
             <div className="px-5 pb-2">
               <a
-                href={cart.checkoutUrl}
+                href={fixCheckoutUrl(cart.checkoutUrl)}
                 className="block w-full text-center py-4 text-[13px] font-medium tracking-widest uppercase text-white transition-opacity hover:opacity-90"
                 style={{ backgroundColor: "var(--bg-dark)" }}
               >
