@@ -1,0 +1,137 @@
+{
+  "nav": {
+    "newArrivals": "Nieuw binnen",
+    "bestSellers": "Best Verkocht",
+    "clothing": "Kleding",
+    "support": "Ondersteuning",
+    "menu": "Menu",
+    "search": "Zoek op",
+    "profile": "Profiel",
+    "cart": "Winkelwagen"
+  },
+  "cart": {
+    "title": "Winkelwagen",
+    "empty": "Uw winkelwagentje is leeg",
+    "checkout": "Kassa",
+    "remove": "Verwijder",
+    "freeShippingProgress": "Besteed {bedrag} meer voor gratis verzending",
+    "freeShippingUnlocked": "Je hebt gratis verzending ontgrendeld!",
+    "shippingNote": "Verzendkosten en belastingen worden berekend bij het afrekenen"
+  },
+  "product": {
+    "addToCart": "In winkelwagen",
+    "sizeGuide": "Maattabel",
+    "details": "Details",
+    "returns": "Geeft als resultaat",
+    "selectSize": "Selecteer maat",
+    "soldOut": "Uitverkocht",
+    "shopNow": "Nu winkelen",
+    "newIn": "Nieuw",
+    "mostWanted": "Meest gewild"
+  },
+  "collection": {
+    "viewAll": "Bekijk alle",
+    "loadMore": "Meer laden",
+    "products": "{telling} producten",
+    "page": "Pagina"
+  },
+  "menu": {
+    "newArrivals": "Nieuw binnen",
+    "bestSellers": "Best Verkocht",
+    "clothing": "Kleding",
+    "support": "Ondersteuning",
+    "returnsExchange": "Retourneren / Ruilen",
+    "orderTracking": "Bestelling volgen",
+    "faq": "FAQ",
+    "contact": "Neem contact op met",
+    "policies": "Beleid"
+  },
+  "footer": {
+    "stayUpdated": "Blijf op de hoogte",
+    "emailSignup": "Meld je aan voor onze e-mails en ontvang 10% korting",
+    "emailPlaceholder": "Uw e-mail",
+    "subscribe": "Aanmelden",
+    "privacyConsent": "Ik ga akkoord met de",
+    "privacyPolicy": "Privacybeleid",
+    "brand": "Merk",
+    "aboutUs": "Over ons",
+    "sustainability": "Duurzaamheid",
+    "careers": "Carrière",
+    "support": "Ondersteuning",
+    "returnsExchange": "Retourneren / Ruilen",
+    "orderTracking": "Bestelling volgen",
+    "faq": "FAQ",
+    "contact": "Neem contact op met",
+    "countryLanguage": "Land & Taal",
+    "language": "Taal"
+  },
+  "support": {
+    "returns": {
+      "title": "Retourneren en ruilen",
+      "subtitle": "Ondersteuning",
+      "description": "We accepteren retourzendingen en ruilingen binnen 14 dagen na levering. De artikelen moeten ongedragen, ongewassen en in originele staat zijn met de labels eraan vast.",
+      "startReturn": "Terugkeren",
+      "faq": "Veelgestelde vragen"
+    },
+    "tracking": {
+      "title": "Je bestelling volgen",
+      "subtitle": "Ondersteuning",
+      "description": "Voer hieronder je trackingnummer in om de laatste updates over je zending te bekijken.",
+      "placeholder": "Traceringsnummer invoeren",
+      "track": "Track",
+      "notFound": "Trackingnummer niet gevonden",
+      "notFoundDesc": "We konden geen zendingen met dat nummer vinden. Het kan enkele uren na verzending duren voordat de tracking-updates verschijnen.",
+      "contactUs": "Neem contact met ons op",
+      "noEvents": "Nog geen evenementen bijhouden. Kom snel terug."
+    },
+    "faq": {
+      "title": "FAQ",
+      "subtitle": "Ondersteuning"
+    },
+    "contact": {
+      "title": "Neem contact op met",
+      "subtitle": "Ondersteuning"
+    }
+  },
+  "hero": {
+    "season": "SS2026",
+    "newArrivals": "Nieuw binnen",
+    "shopNow": "Nu winkelen",
+    "newItemsLiveNow": "Nieuwe items nu live",
+    "tees": "Tees",
+    "hoodies": "Hoodies"
+  },
+  "announcement": {
+    "freeShipping": "Gratis verzending bij bestellingen boven {amount}",
+    "newArrivals": "Elke week nieuwe aanwinsten",
+    "easyReturns": "Gemakkelijk retourneren en ruilen",
+    "secureCheckout": "Veilig afrekenen"
+  },
+  "errors": {
+    "notFound": "Pagina niet gevonden",
+    "backHome": "Terug naar home"
+  },
+  "newsletter": {
+    "title": "BLIJF OP DE HOOGTE",
+    "subtitle": "Schrijf je in voor onze nieuwsbrief en ontvang 10% korting",
+    "placeholder": "your@email.com",
+    "subscribe": "ABONNEER",
+    "success": "Kijk even in je inbox!",
+    "alreadySubscribed": "Je bent al aangemeld",
+    "error": "Er is een fout opgetreden. Probeer het nog eens.",
+    "codeLabel": "Uw kortingscode:",
+    "copy": "Kopiëren",
+    "copied": "Gekopieerd!",
+    "expires": "Verloopt over",
+    "checkbox": "Ik ga ermee akkoord e-mails van TheBrandCrate te ontvangen"
+  },
+  "modal": {
+    "shoppingIn": "Ben je aan het winkelen op {country}?",
+    "freeShipping": "Gratis verzending bij bestellingen van meer dan {amount}",
+    "deliveryDays": "Je ontvangt je bestelling binnen 4 tot 7 werkdagen",
+    "returns": "Eenvoudig retourneren binnen 14 dagen, met traceerbaarheid",
+    "shippingTo": "Verzending naar",
+    "language": "Taal",
+    "confirm": "Bevestigen"
+  }
+}

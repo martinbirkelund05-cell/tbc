@@ -1,0 +1,137 @@
+{
+  "nav": {
+    "newArrivals": "Nye ankomster",
+    "bestSellers": "Bedste sælgere",
+    "clothing": "Beklædning",
+    "support": "Støtte",
+    "menu": "Menu",
+    "search": "Søg efter",
+    "profile": "Profil",
+    "cart": "Vogn"
+  },
+  "cart": {
+    "title": "Vogn",
+    "empty": "Din indkøbskurv er tom",
+    "checkout": "Kasse",
+    "remove": "Fjerne",
+    "freeShippingProgress": "Brug {beløb} mere for gratis fragt",
+    "freeShippingUnlocked": "Du har låst op for fri fragt!",
+    "shippingNote": "Forsendelse og skatter beregnes ved kassen"
+  },
+  "product": {
+    "addToCart": "Læg i kurv",
+    "sizeGuide": "Størrelsesguide",
+    "details": "Detaljer",
+    "returns": "Returnerer",
+    "selectSize": "Vælg størrelse",
+    "soldOut": "Udsolgt",
+    "shopNow": "Køb nu",
+    "newIn": "Ny ind",
+    "mostWanted": "Mest ønsket"
+  },
+  "collection": {
+    "viewAll": "Se alle",
+    "loadMore": "Læs mere",
+    "products": "{antal} produkter",
+    "page": "Side"
+  },
+  "menu": {
+    "newArrivals": "Nye ankomster",
+    "bestSellers": "Bedste sælgere",
+    "clothing": "Beklædning",
+    "support": "Støtte",
+    "returnsExchange": "Returnering/ombytning",
+    "orderTracking": "Sporing af ordrer",
+    "faq": "OFTE STILLEDE SPØRGSMÅL",
+    "contact": "Kontakt",
+    "policies": "Politikker"
+  },
+  "footer": {
+    "stayUpdated": "Hold dig opdateret",
+    "emailSignup": "Tilmeld dig vores e-mails og få 10% rabat",
+    "emailPlaceholder": "Din e-mail",
+    "subscribe": "Abonner",
+    "privacyConsent": "Jeg er indforstået med",
+    "privacyPolicy": "Politik for beskyttelse af personlige oplysninger",
+    "brand": "Brand",
+    "aboutUs": "Om os",
+    "sustainability": "Bæredygtighed",
+    "careers": "Karriere",
+    "support": "Støtte",
+    "returnsExchange": "Returnering/ombytning",
+    "orderTracking": "Sporing af ordrer",
+    "faq": "OFTE STILLEDE SPØRGSMÅL",
+    "contact": "Kontakt",
+    "countryLanguage": "Land og sprog",
+    "language": "Sprog"
+  },
+  "support": {
+    "returns": {
+      "title": "Returneringer og ombytninger",
+      "subtitle": "Støtte",
+      "description": "Vi accepterer returnering og ombytning inden for 14 dage efter levering. Varerne skal være ubrugte, uvaskede og i original stand med påsatte mærker.",
+      "startReturn": "Start en returnering",
+      "faq": "Ofte stillede spørgsmål"
+    },
+    "tracking": {
+      "title": "Spor din ordre",
+      "subtitle": "Støtte",
+      "description": "Indtast dit sporingsnummer nedenfor for at se de seneste opdateringer om din forsendelse.",
+      "placeholder": "Indtast sporingsnummer",
+      "track": "Spor",
+      "notFound": "Sporingsnummer ikke fundet",
+      "notFoundDesc": "Vi kunne ikke finde nogen forsendelse med det nummer. Det kan tage et par timer efter afsendelse, før sporingsopdateringer vises.",
+      "contactUs": "Kontakt os",
+      "noEvents": "Ingen sporing af begivenheder endnu. Kom snart tilbage."
+    },
+    "faq": {
+      "title": "OFTE STILLEDE SPØRGSMÅL",
+      "subtitle": "Støtte"
+    },
+    "contact": {
+      "title": "Kontakt",
+      "subtitle": "Støtte"
+    }
+  },
+  "hero": {
+    "season": "SS2026",
+    "newArrivals": "Nye ankomster",
+    "shopNow": "Køb nu",
+    "newItemsLiveNow": "Nye varer live nu",
+    "tees": "T-shirts",
+    "hoodies": "Hættetrøjer"
+  },
+  "announcement": {
+    "freeShipping": "Fri fragt på ordrer over {amount}",
+    "newArrivals": "Nye varer hver uge",
+    "easyReturns": "Nemme returneringer og ombytninger",
+    "secureCheckout": "Sikker checkout"
+  },
+  "errors": {
+    "notFound": "Siden blev ikke fundet",
+    "backHome": "Tilbage til start"
+  },
+  "newsletter": {
+    "title": "HOLD DIG OPDATERET",
+    "subtitle": "Tilmeld dig vores nyhedsbrev og få 10 % rabat",
+    "placeholder": "your@email.com",
+    "subscribe": "TILMELD DIG",
+    "success": "Tjek din indbakke!",
+    "alreadySubscribed": "Du er allerede tilmeldt",
+    "error": "Der opstod en fejl. Prøv igen.",
+    "codeLabel": "Din rabatkode:",
+    "copy": "Kopier",
+    "copied": "Kopieret!",
+    "expires": "Udløber om",
+    "checkbox": "Jeg accepterer at modtage e-mails fra TheBrandCrate"
+  },
+  "modal": {
+    "shoppingIn": "Handler du på {country}?",
+    "freeShipping": "Gratis fragt ved køb for over {amount}",
+    "deliveryDays": "Du modtager din ordre inden for 4–7 hverdage",
+    "returns": "Enkel returret med sporingsnummer inden for 14 dage",
+    "shippingTo": "Levering til",
+    "language": "Sprog",
+    "confirm": "Bekræft"
+  }
+}

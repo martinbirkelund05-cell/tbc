@@ -1,0 +1,137 @@
+{
+  "nav": {
+    "newArrivals": "New Arrivals",
+    "bestSellers": "Best Sellers",
+    "clothing": "Clothing",
+    "support": "Support",
+    "menu": "Menu",
+    "search": "Search",
+    "profile": "Profile",
+    "cart": "Cart"
+  },
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty",
+    "checkout": "Checkout",
+    "remove": "Remove",
+    "freeShippingProgress": "Spend {amount} more for free shipping",
+    "freeShippingUnlocked": "You've unlocked free shipping!",
+    "shippingNote": "Shipping & taxes calculated at checkout"
+  },
+  "product": {
+    "addToCart": "Add to Cart",
+    "sizeGuide": "Size Guide",
+    "details": "Details",
+    "returns": "Returns",
+    "selectSize": "Select size",
+    "soldOut": "Sold Out",
+    "shopNow": "Shop Now",
+    "newIn": "New In",
+    "mostWanted": "Most Wanted"
+  },
+  "collection": {
+    "viewAll": "View all",
+    "loadMore": "Load more",
+    "products": "{count} products",
+    "page": "Page"
+  },
+  "menu": {
+    "newArrivals": "New Arrivals",
+    "bestSellers": "Best Sellers",
+    "clothing": "Clothing",
+    "support": "Support",
+    "returnsExchange": "Returns / Exchange",
+    "orderTracking": "Order Tracking",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "policies": "Policies"
+  },
+  "footer": {
+    "stayUpdated": "Stay Updated",
+    "emailSignup": "Sign up to our emails and get 10% off",
+    "emailPlaceholder": "Your email",
+    "subscribe": "Subscribe",
+    "privacyConsent": "I agree to the",
+    "privacyPolicy": "Privacy Policy",
+    "brand": "Brand",
+    "aboutUs": "About Us",
+    "sustainability": "Sustainability",
+    "careers": "Careers",
+    "support": "Support",
+    "returnsExchange": "Returns / Exchange",
+    "orderTracking": "Order Tracking",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "countryLanguage": "Country & Language",
+    "language": "Language"
+  },
+  "support": {
+    "returns": {
+      "title": "Returns & Exchanges",
+      "subtitle": "Support",
+      "description": "We accept returns and exchanges within 14 days of delivery. Items must be unworn, unwashed, and in original condition with tags attached.",
+      "startReturn": "Start a Return",
+      "faq": "Frequently Asked Questions"
+    },
+    "tracking": {
+      "title": "Track Your Order",
+      "subtitle": "Support",
+      "description": "Enter your tracking number below to see the latest updates on your shipment.",
+      "placeholder": "Enter tracking number",
+      "track": "Track",
+      "notFound": "Tracking number not found",
+      "notFoundDesc": "We couldn't find any shipment with that number. It may take a few hours after dispatch before tracking updates appear.",
+      "contactUs": "Contact us",
+      "noEvents": "No tracking events yet. Check back soon."
+    },
+    "faq": {
+      "title": "FAQ",
+      "subtitle": "Support"
+    },
+    "contact": {
+      "title": "Contact",
+      "subtitle": "Support"
+    }
+  },
+  "hero": {
+    "season": "SS2026",
+    "newArrivals": "New Arrivals",
+    "shopNow": "Shop Now",
+    "newItemsLiveNow": "New Items Live Now",
+    "tees": "Tees",
+    "hoodies": "Hoodies"
+  },
+  "announcement": {
+    "freeShipping": "Free shipping on orders over {amount}",
+    "newArrivals": "New arrivals every week",
+    "easyReturns": "Easy returns & exchanges",
+    "secureCheckout": "Secure checkout"
+  },
+  "errors": {
+    "notFound": "Page not found",
+    "backHome": "Back to home"
+  },
+  "newsletter": {
+    "title": "STAY UPDATED",
+    "subtitle": "Sign up to our emails and get 10% off",
+    "placeholder": "your@email.com",
+    "subscribe": "SUBSCRIBE",
+    "success": "Check your inbox!",
+    "alreadySubscribed": "You're already signed up",
+    "error": "Something went wrong, try again",
+    "codeLabel": "Your discount code:",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "expires": "Expires in",
+    "checkbox": "I agree to receive emails from TheBrandCrate"
+  },
+  "modal": {
+    "shoppingIn": "Are you shopping in {country}?",
+    "freeShipping": "Free shipping on orders over {amount}",
+    "deliveryDays": "Receive your order in 4–7 business days",
+    "returns": "Easy, tracked 14-day returns",
+    "shippingTo": "Shipping to",
+    "language": "Language",
+    "confirm": "Confirm"
+  }
+}

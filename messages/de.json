@@ -1,0 +1,137 @@
+{
+  "nav": {
+    "newArrivals": "Neu eingetroffen",
+    "bestSellers": "Meistverkaufte Produkte",
+    "clothing": "Kleidung",
+    "support": "Unterstützung",
+    "menu": "Menü",
+    "search": "Suche",
+    "profile": "Profil",
+    "cart": "Wagen"
+  },
+  "cart": {
+    "title": "Wagen",
+    "empty": "Ihr Warenkorb ist leer",
+    "checkout": "Kasse",
+    "remove": "Entfernen",
+    "freeShippingProgress": "Geben Sie {Menge} mehr für kostenlosen Versand aus",
+    "freeShippingUnlocked": "Sie haben den kostenlosen Versand freigeschaltet!",
+    "shippingNote": "Versand und Steuern werden an der Kasse berechnet"
+  },
+  "product": {
+    "addToCart": "Zum Warenkorb hinzufügen",
+    "sizeGuide": "Größenführer",
+    "details": "Einzelheiten",
+    "returns": "Rückgabe",
+    "selectSize": "Größe auswählen",
+    "soldOut": "Ausverkauft",
+    "shopNow": "Jetzt einkaufen",
+    "newIn": "Neu",
+    "mostWanted": "Meistgewünscht"
+  },
+  "collection": {
+    "viewAll": "Alle anzeigen",
+    "loadMore": "Mehr laden",
+    "products": "{Anzahl} Produkte",
+    "page": "Seite"
+  },
+  "menu": {
+    "newArrivals": "Neu eingetroffen",
+    "bestSellers": "Meistverkaufte Produkte",
+    "clothing": "Kleidung",
+    "support": "Unterstützung",
+    "returnsExchange": "Rückgabe/Umtausch",
+    "orderTracking": "Auftragsverfolgung",
+    "faq": "FAQ",
+    "contact": "Kontakt",
+    "policies": "Politiken"
+  },
+  "footer": {
+    "stayUpdated": "Bleiben Sie auf dem Laufenden",
+    "emailSignup": "Melden Sie sich für unsere E-Mails an und erhalten Sie 10% Rabatt",
+    "emailPlaceholder": "Deine E-Mail",
+    "subscribe": "Abonnieren",
+    "privacyConsent": "Ich akzeptiere die",
+    "privacyPolicy": "Datenschutzbestimmungen",
+    "brand": "Marke",
+    "aboutUs": "Über uns",
+    "sustainability": "Nachhaltigkeit",
+    "careers": "Karriere",
+    "support": "Unterstützung",
+    "returnsExchange": "Rückgabe/Umtausch",
+    "orderTracking": "Auftragsverfolgung",
+    "faq": "FAQ",
+    "contact": "Kontakt",
+    "countryLanguage": "Land & Sprache",
+    "language": "Sprache"
+  },
+  "support": {
+    "returns": {
+      "title": "Rückgabe und Umtausch",
+      "subtitle": "Unterstützung",
+      "description": "Wir akzeptieren Rückgaben und Umtausch innerhalb von 14 Tagen nach Lieferung. Die Artikel müssen ungetragen, ungewaschen und im Originalzustand mit angebrachten Etiketten sein.",
+      "startReturn": "Rückkehr starten",
+      "faq": "Häufig gestellte Fragen"
+    },
+    "tracking": {
+      "title": "Ihre Bestellung verfolgen",
+      "subtitle": "Unterstützung",
+      "description": "Geben Sie unten Ihre Sendungsverfolgungsnummer ein, um die neuesten Informationen über Ihre Sendung zu erhalten.",
+      "placeholder": "Tracking-Nummer eingeben",
+      "track": "Spur",
+      "notFound": "Trackingnummer nicht gefunden",
+      "notFoundDesc": "Wir konnten keine Sendung mit dieser Nummer finden. Es kann ein paar Stunden nach dem Versand dauern, bis eine Aktualisierung der Sendungsverfolgung erscheint.",
+      "contactUs": "Kontakt",
+      "noEvents": "Noch kein Tracking von Ereignissen. Schauen Sie bald wieder vorbei."
+    },
+    "faq": {
+      "title": "FAQ",
+      "subtitle": "Unterstützung"
+    },
+    "contact": {
+      "title": "Kontakt",
+      "subtitle": "Unterstützung"
+    }
+  },
+  "hero": {
+    "season": "SS2026",
+    "newArrivals": "Neu eingetroffen",
+    "shopNow": "Jetzt einkaufen",
+    "newItemsLiveNow": "Neue Artikel jetzt live",
+    "tees": "Abschläge",
+    "hoodies": "Kapuzenpullover"
+  },
+  "announcement": {
+    "freeShipping": "Kostenloser Versand ab {amount}",
+    "newArrivals": "Jede Woche Neuzugänge",
+    "easyReturns": "Einfache Rückgabe und Umtausch",
+    "secureCheckout": "Sicherer Checkout"
+  },
+  "errors": {
+    "notFound": "Seite nicht gefunden",
+    "backHome": "Zurück nach Hause"
+  },
+  "newsletter": {
+    "title": "BLEIBEN SIE AUF DEM LAUFENDEN",
+    "subtitle": "Melde dich für unseren Newsletter an und erhalte 10 % Rabatt",
+    "placeholder": "your@email.com",
+    "subscribe": "ABONNIEREN",
+    "success": "Schau in deinen Posteingang!",
+    "alreadySubscribed": "Du bist bereits angemeldet",
+    "error": "Es ist ein Fehler aufgetreten. Bitte versuche es erneut.",
+    "codeLabel": "Dein Rabattcode:",
+    "copy": "Kopieren",
+    "copied": "Kopiert!",
+    "expires": "Läuft ab in",
+    "checkbox": "Ich bin damit einverstanden, E-Mails von TheBrandCrate zu erhalten"
+  },
+  "modal": {
+    "shoppingIn": "Kaufen Sie bei {country} ein?",
+    "freeShipping": "Kostenloser Versand bei Bestellungen über {amount}",
+    "deliveryDays": "Sie erhalten Ihre Bestellung innerhalb von 4–7 Werktagen",
+    "returns": "Einfache, nachverfolgbare Rücksendung innerhalb von 14 Tagen",
+    "shippingTo": "Versand nach",
+    "language": "Sprache",
+    "confirm": "Bestätigen"
+  }
+}
