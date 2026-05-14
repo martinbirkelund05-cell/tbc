@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getCollection } from "@/lib/queries";
 import { getCountryCode } from "@/lib/country";
 import { CollectionGrid } from "@/components/CollectionGrid";
+import { TrackCollection } from "@/components/TrackCollection";
 import type { Metadata } from "next";
 
 interface Props {
@@ -29,6 +30,7 @@ export default async function CollectionPage({ params }: Props) {
 
   return (
     <div>
+      <TrackCollection collectionTitle={data.title} products={data.products} />
       <h1
         className="text-[13px] font-bold mt-6 mb-4"
         style={{

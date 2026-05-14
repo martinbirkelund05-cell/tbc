@@ -13,6 +13,7 @@ import { NavSpacer } from "@/components/NavSpacer";
 import { WelcomeModal } from "@/components/WelcomeModal";
 import { CookieBanner } from "@/components/CookieBanner";
 import { NewsletterPopup } from "@/components/NewsletterPopup";
+import { GAProvider } from "@/components/GAProvider";
 import { getAllCollections, getShopPolicies } from "@/lib/queries";
 import type { ShopifyPolicies } from "@/lib/queries";
 
@@ -55,6 +56,7 @@ export default async function LocaleLayout({
             <WelcomeModal currentLocale={locale} />
             <NewsletterPopup />
             <CookieBanner />
+            <GAProvider gaId={process.env.NEXT_PUBLIC_GA_ID ?? ""} />
           </CartProvider>
         </NextIntlClientProvider>
       </body>

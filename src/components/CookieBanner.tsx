@@ -207,12 +207,14 @@ export function CookieBanner() {
   function acceptAll() {
     localStorage.setItem("cookieConsent", JSON.stringify({ necessary: true, preferences: true, marketing: true, analytics: true }));
     document.cookie = "consent=accepted; max-age=31536000; path=/";
+    window.dispatchEvent(new CustomEvent("cookieConsentUpdated"));
     dismiss();
   }
 
   function savePrefs(prefs: Prefs) {
     localStorage.setItem("cookieConsent", JSON.stringify(prefs));
     document.cookie = "consent=custom; max-age=31536000; path=/";
+    window.dispatchEvent(new CustomEvent("cookieConsentUpdated"));
     dismiss();
   }
 

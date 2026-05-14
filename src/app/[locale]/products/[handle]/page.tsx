@@ -73,7 +73,7 @@ export default async function ProductPage({ params }: Props) {
             {formatPrice(price.amount, price.currencyCode)}
           </p>
           <div className="mb-4" style={{ height: "1px", backgroundColor: "var(--border)" }} />
-          <AddToCartButton variants={variants} defaultVariantId={variants[0]?.id} description={description} />
+          <AddToCartButton variants={variants} defaultVariantId={variants[0]?.id} description={description} productTitle={product.title} productId={product.id} />
         </div>
       </div>
 

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { formatPrice } from "@/lib/utils";
 import { ExpressCheckout } from "@/components/ExpressCheckout";
+import { trackEvent } from "@/lib/ga";
 import type { ShopifyProduct, ShopifyImage, ShopifyProductVariant } from "@/types/shopify";
 
 const DARK = "var(--brand)";
@@ -42,6 +43,20 @@ export function ProductDesktopLayout({ product, images, variants, description }:
     await addItem(selectedVariantId, 1);
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
+
+    trackEvent("add_to_cart", {
+      currency: selectedVariant?.price.currencyCode,
+      value: parseFloat(selectedVariant?.price.amount ?? "0"),
+      items: [
+        {
+          item_id: product.id,
+          item_name: product.title,
+          item_variant: selectedVariant?.title,
+          price: parseFloat(selectedVariant?.price.amount ?? "0"),
+          quantity: 1,
+        },
+      ],
+    });
   };
 
   return (

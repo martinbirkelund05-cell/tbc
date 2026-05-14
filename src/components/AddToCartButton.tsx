@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import type { ShopifyProductVariant } from "@/types/shopify";
 import { ExpressCheckout } from "@/components/ExpressCheckout";
 import { FindYourSize } from "@/components/FindYourSize";
+import { trackEvent } from "@/lib/ga";
 
 const SIZE_DATA = {
   in: [
@@ -86,9 +87,11 @@ interface Props {
   variants: ShopifyProductVariant[];
   defaultVariantId?: string;
   description?: string;
+  productTitle?: string;
+  productId?: string;
 }
 
-export function AddToCartButton({ variants, defaultVariantId, description }: Props) {
+export function AddToCartButton({ variants, defaultVariantId, description, productTitle, productId }: Props) {
   const t = useTranslations('product');
   const { addItem, isLoading } = useCart();
   const [selectedId, setSelectedId] = useState(defaultVariantId ?? variants[0]?.id ?? "");
@@ -109,6 +112,20 @@ export function AddToCartButton({ variants, defaultVariantId, description }: Pro
     await addItem(selectedId, 1);
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
+
+    trackEvent("add_to_cart", {
+      currency: selectedVariant?.price.currencyCode,
+      value: parseFloat(selectedVariant?.price.amount ?? "0"),
+      items: [
+        {
+          item_id: productId,
+          item_name: productTitle,
+          item_variant: selectedVariant?.title,
+          price: parseFloat(selectedVariant?.price.amount ?? "0"),
+          quantity: 1,
+        },
+      ],
+    });
   };
 
   return (

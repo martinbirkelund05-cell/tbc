@@ -6,6 +6,7 @@ import { useCart } from "@/context/CartContext";
 import { useRecentlyViewed } from "@/hooks/useRecentlyViewed";
 import { useTranslations } from 'next-intl';
 import { formatPrice, fixCheckoutUrl } from "@/lib/utils";
+import { trackEvent } from "@/lib/ga";
 import Image from "next/image";
 import Link from "next/link";
 import type { ShopifyProduct } from "@/types/shopify";
@@ -322,6 +323,20 @@ export function CartDrawer() {
             <div className="px-5 pb-2">
               <a
                 href={fixCheckoutUrl(cart.checkoutUrl)}
+                onClick={() =>
+                  trackEvent("begin_checkout", {
+                    currency: cart.cost.subtotalAmount.currencyCode,
+                    value: parseFloat(cart.cost.subtotalAmount.amount),
+                    num_items: cart.totalQuantity,
+                    items: lines.map((l) => ({
+                      item_id: l.merchandise.product.handle,
+                      item_name: l.merchandise.product.title,
+                      item_variant: l.merchandise.title !== "Default Title" ? l.merchandise.title : undefined,
+                      price: parseFloat(l.merchandise.price.amount),
+                      quantity: l.quantity,
+                    })),
+                  })
+                }
                 className="block w-full text-center py-4 text-[13px] font-medium tracking-widest uppercase text-white transition-opacity hover:opacity-90"
                 style={{ backgroundColor: "var(--bg-dark)" }}
               >
