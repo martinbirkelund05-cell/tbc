@@ -108,6 +108,7 @@ export function ProductImages({ images, title, variants }: Props) {
               ref={stripRef}
               style={{
                 display:    "flex",
+                gap:        0,
                 width:      `${images.length * 100}%`,
                 height:     "100%",
                 transform:  `translateX(-${selected * (100 / images.length)}%)`,
