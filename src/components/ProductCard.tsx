@@ -46,7 +46,11 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
   const { addItem } = useCart();
 
   const images = product.images.edges.map((e) => e.node);
-  const currentImage = images[imgIndex] ?? product.featuredImage;
+  const displayImages = images.length > 0
+    ? images
+    : product.featuredImage
+    ? [product.featuredImage]
+    : [];
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
@@ -59,7 +63,7 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
     didSwipe.current = true;
     setImgIndex((prev) =>
       delta < 0
-        ? Math.min(prev + 1, images.length - 1)
+        ? Math.min(prev + 1, displayImages.length - 1)
         : Math.max(prev - 1, 0)
     );
   };
@@ -120,7 +124,7 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
-          <div className="absolute inset-0">
+          <div className="absolute inset-0" style={{ overflow: "hidden" }}>
             {badge && (
               <span
                 className="absolute top-1.5 left-1.5 z-10 text-[9px] font-normal tracking-wide px-1.5 py-0.5"
@@ -133,14 +137,57 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
                 {badge}
               </span>
             )}
-            {currentImage && (
-              <Image
-                src={currentImage.url}
-                alt={currentImage.altText ?? product.title}
-                fill
-                sizes="(max-width: 640px) 50vw, 33vw"
-                className="object-cover"
-              />
+
+            {/* Sliding strip */}
+            {displayImages.length > 0 && (
+              <div
+                style={{
+                  display: "flex",
+                  width: `${displayImages.length * 100}%`,
+                  height: "100%",
+                  transform: `translateX(-${imgIndex * (100 / displayImages.length)}%)`,
+                  transition: "transform 0.35s ease",
+                  willChange: "transform",
+                }}
+              >
+                {displayImages.map((img, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      position: "relative",
+                      width: `${100 / displayImages.length}%`,
+                      flexShrink: 0,
+                      height: "100%",
+                    }}
+                  >
+                    <Image
+                      src={img.url}
+                      alt={img.altText ?? product.title}
+                      fill
+                      sizes="(max-width: 640px) 50vw, 33vw"
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Dot indicators */}
+            {displayImages.length > 1 && (
+              <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-1 z-10 pointer-events-none">
+                {displayImages.map((_, i) => (
+                  <span
+                    key={i}
+                    style={{
+                      width: i === imgIndex ? "16px" : "6px",
+                      height: "2px",
+                      borderRadius: 0,
+                      backgroundColor: i === imgIndex ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.4)",
+                      transition: "width 0.25s ease, background-color 0.25s ease",
+                    }}
+                  />
+                ))}
+              </div>
             )}
           </div>
         </div>
