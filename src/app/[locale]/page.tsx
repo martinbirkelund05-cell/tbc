@@ -33,7 +33,7 @@ export default async function HomePage() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "url('/hero.png')",
+            backgroundImage: "url('/hero.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
