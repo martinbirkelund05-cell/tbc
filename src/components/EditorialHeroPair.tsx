@@ -47,7 +47,7 @@ export function EditorialHeroPair() {
         className="absolute inset-x-0 top-0"
         style={{
           height: "50%",
-          backgroundImage: "url('/hero2.jpg')",
+          backgroundImage: "url('/tees.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -57,7 +57,7 @@ export function EditorialHeroPair() {
         className="absolute inset-x-0 bottom-0"
         style={{
           height: "50%",
-          backgroundImage: "url('/hero3.jpg')",
+          backgroundImage: "url('/hoodies.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
