@@ -82,9 +82,14 @@ export function Navbar({ collections, policies }: { collections: ShopifyCollecti
 
         {/* Right — user + cart */}
         <div className="flex items-center gap-3 ml-auto">
-          <button aria-label={t('profile')} className="p-0.5" style={{ color, transition: "color 0.3s ease" }}>
+          <a
+            href={`https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN ?? "pcqthb-30.myshopify.com"}/account/login`}
+            aria-label={t('profile')}
+            className="p-0.5"
+            style={{ color, transition: "color 0.3s ease" }}
+          >
             <User size={16} strokeWidth={1.75} />
-          </button>
+          </a>
           <button
             onClick={openCart}
             className="relative p-0.5"
