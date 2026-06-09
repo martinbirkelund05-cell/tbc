@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from 'next-intl';
 import { Menu, Search, User, Lock, X } from "lucide-react";
 import { SlideMenu } from "@/components/SlideMenu";
+import { SearchOverlay } from "@/components/SearchOverlay";
 import type { ShopifyCollection, ShopifyPolicies } from "@/lib/queries";
 
 export function Navbar({ collections, policies }: { collections: ShopifyCollection[]; policies: ShopifyPolicies }) {
@@ -14,6 +15,7 @@ export function Navbar({ collections, policies }: { collections: ShopifyCollecti
   const { cart, openCart } = useCart();
   const quantity = cart?.totalQuantity ?? 0;
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const [atTop, setAtTop] = useState(true);
   const [scrollingDown, setScrollingDown] = useState(false);
   const [navTop, setNavTop] = useState(40);
@@ -66,7 +68,12 @@ export function Navbar({ collections, policies }: { collections: ShopifyCollecti
           >
             {menuOpen ? <X size={16} strokeWidth={1.75} /> : <Menu size={16} strokeWidth={1.75} />}
           </button>
-          <button aria-label={t('search')} className="p-0.5" style={{ color, transition: "color 0.3s ease" }}>
+          <button
+            onClick={() => setSearchOpen(true)}
+            aria-label={t('search')}
+            className="p-0.5"
+            style={{ color, transition: "color 0.3s ease" }}
+          >
             <Search size={16} strokeWidth={1.75} />
           </button>
         </div>
@@ -114,6 +121,7 @@ export function Navbar({ collections, policies }: { collections: ShopifyCollecti
       </div>
 
       <SlideMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} collections={collections} policies={policies} />
+      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
 }

@@ -361,3 +361,24 @@ export async function removeFromCart(cartId: string, lineId: string, country?: s
   }, country);
   return data.cartLinesRemove.cart;
 }
+
+export async function searchProducts(q: string, first = 8, country?: string): Promise<ShopifyProduct[]> {
+  const query = `
+    ${PRODUCT_FRAGMENT}
+    query SearchProducts($q: String!, $first: Int!, $country: CountryCode) @inContext(country: $country) {
+      search(query: $q, first: $first, types: PRODUCT) {
+        edges {
+          node {
+            ... on Product {
+              ...ProductFields
+            }
+          }
+        }
+      }
+    }
+  `;
+  const data = await shopifyFetch<{ search: { edges: { node: ShopifyProduct }[] } }>(
+    query, { q, first }, country
+  );
+  return data.search.edges.map((e) => e.node).filter((p) => p.id);
+}
