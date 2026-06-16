@@ -29,56 +29,44 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "invalid_email" }, { status: 400 });
     }
 
-    // Step 1 — Create Klaviyo profile
-    const { status: createStatus, data: createData } = await klaviyo<{
-      data?: { id: string };
-      errors?: { meta?: { duplicate_profile_id?: string } }[];
-    }>("/profiles/", {
+    // Step 1 — Subscribe profile + add to list in one call
+    const { status: subStatus, data: subData } = await klaviyo<{
+      errors?: { detail?: string; meta?: { duplicate_profile_id?: string } }[];
+    }>("/profile-subscription-bulk-create-jobs/", {
       method: "POST",
       body: JSON.stringify({
         data: {
-          type: "profile",
+          type: "profile-subscription-bulk-create-job",
           attributes: {
-            email,
-            subscriptions: {
-              email: { marketing: { consent: "SUBSCRIBED" } },
+            profiles: {
+              data: [{
+                type: "profile",
+                attributes: {
+                  email,
+                  subscriptions: {
+                    email: { marketing: { consent: "SUBSCRIBED" } },
+                  },
+                },
+              }],
             },
           },
+          relationships: KLAVIYO_LIST_ID
+            ? { list: { data: { type: "list", id: KLAVIYO_LIST_ID } } }
+            : undefined,
         },
       }),
     });
 
-    console.log("Klaviyo profile status:", createStatus, JSON.stringify(createData));
+    console.log("Klaviyo subscribe status:", subStatus, JSON.stringify(subData));
 
-    let profileId: string | null = null;
-    let alreadyExists = false;
-
-    if (createStatus === 201) {
-      profileId = createData?.data?.id ?? null;
-    } else if (createStatus === 409) {
-      alreadyExists = true;
-      profileId = createData?.errors?.[0]?.meta?.duplicate_profile_id ?? null;
-    } else {
-      console.error("Klaviyo profile error:", createData);
-      // Don't block — continue to send code anyway
-    }
-
-    // If truly already subscribed (409 and no profile ID to recover), stop here
-    if (alreadyExists && !profileId) {
+    // 409 = already subscribed
+    if (subStatus === 409) {
       return NextResponse.json({ error: "already_subscribed" }, { status: 409 });
     }
 
-    // Step 2 — Add to list (fire-and-forget, never blocks success)
-    if (KLAVIYO_LIST_ID && profileId) {
-      klaviyo(`/lists/${KLAVIYO_LIST_ID}/relationships/profiles/`, {
-        method: "POST",
-        body: JSON.stringify({ data: [{ type: "profile", id: profileId }] }),
-      }).catch((e) => console.error("List add error:", e));
-    }
-
-    // If profile already existed → already subscribed
-    if (alreadyExists) {
-      return NextResponse.json({ error: "already_subscribed" }, { status: 409 });
+    if (subStatus !== 202 && subStatus !== 200) {
+      console.error("Klaviyo subscribe error:", subData);
+      // Don't block — still return success code to user
     }
 
     // Step 3 — Expiry
